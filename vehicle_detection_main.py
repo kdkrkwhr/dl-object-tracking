@@ -118,7 +118,7 @@ def object_detection_function():
             detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
             num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
-            cap = cv2.VideoCapture('video/qq1.jpg')
+            cap = cv2.VideoCapture('video/abc.png')
 
             fps_flag = True
             fps = cap.get(cv2.CAP_PROP_FPS)
@@ -258,7 +258,7 @@ def object_detection_function():
                             writer.writerows([csv_line.split(',')])
                 else:
                     # print("- END -")
-                    cap = cv2.VideoCapture('video/qq1.jpg')
+                    cap = cv2.VideoCapture('video/abc.png')
                     continue
 
 object_detection_function()

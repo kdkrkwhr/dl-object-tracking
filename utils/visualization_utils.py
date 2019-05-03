@@ -85,7 +85,7 @@ def visualize_boxes_and_labels_on_image_array(mouse_y,
                                               keypoints=None,
                                               use_normalized_coordinates=False,
                                               max_boxes_to_draw=100,
-                                              min_score_thresh=0.4,
+                                              min_score_thresh=0.2,
                                               agnostic_mode=False,
                                               line_thickness=4):
 
