@@ -1,7 +1,8 @@
 
-# Deep Learning Project                                                               
+# Deep Learning Project      
+   Machine Learning    
    Computer Vision
-   Machine Learning
+
 
 김동기
 ---
