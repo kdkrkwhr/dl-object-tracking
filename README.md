@@ -16,7 +16,7 @@
 ---
 
 **Sample Img**  
-![Detection Example](https://ifh.cc/g/tJDGT.png)
+![Detection Example](https://ifh.cc/g/Ibrou.jpg)
 
 
 ## **참고 자료**  
