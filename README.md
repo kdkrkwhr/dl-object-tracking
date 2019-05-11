@@ -14,6 +14,8 @@
 + OpenCV 3.4.1  
 ### **Tool**  
 + PyCharm  
+### **Detector**  
++ SSD (Single Shot Multibox Detector)    
 ---
 
 **Sample Img**  
