@@ -85,7 +85,7 @@ def visualize_boxes_and_labels_on_image_array(mouse_y,
                                               keypoints=None,
                                               use_normalized_coordinates=False,
                                               max_boxes_to_draw=100,
-                                              min_score_thresh=0.2,
+                                              min_score_thresh=0.4,
                                               agnostic_mode=False,
                                               line_thickness=4):
 
@@ -292,7 +292,7 @@ def draw_bounding_box_on_image(mouse_y,
                    (right, top), (left, top)], width=thickness, fill=(255, 0, 0))
     else:
         draw.line([(left, top), (left, bottom), (right, bottom),
-                   (right, top), (left, top)], width=thickness, fill=(0, 0, 0))
+                   (right, top), (left, top)], width=thickness, fill=(0, 255, 0))
 
     predicted_speed = "n.a."
     predicted_direction = "n.a."
@@ -381,11 +381,11 @@ def draw_bounding_box_on_image(mouse_y,
             draw.rectangle([
                 (left, text_bottom - text_height - 2 * margin),
                 (left + text_width, text_bottom)],
-                fill=(0, 0, 0))
+                fill=(0, 255, 0))
             draw.text(
                 (left + margin, text_bottom - text_height - margin),
                 display_str,
-                fill='white',
+                fill='black',
                 font=font)
         text_bottom -= text_height - 2 * margin
 

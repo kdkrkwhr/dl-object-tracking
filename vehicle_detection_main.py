@@ -37,10 +37,6 @@ PATH_TO_LABELS = os.path.join('data', 'mscoco_label_map.pbtxt')
 
 NUM_CLASSES = 5
 
-# Download Model
-# cap = cv2.VideoCapture('test_0710.avi')
-# (ret, first_frame) = cap.read()
-
 detection_graph = tf.Graph()
 with detection_graph.as_default():
     od_graph_def = tf.GraphDef()
@@ -63,8 +59,7 @@ def mousecall(event, x, y, flags, param):
         mouse_y = y
         if mouse_flag == True:
             img = copy.deepcopy(first_frame)
-            # cv2.line(img, (0, y), (1400, y), (0, 0xFF, 0), 5)
-            # cv2.line(img, (x, y-20), (x, y+20), (0, 0xFF, 0), 5)
+
             cv2.imshow('result', img)
         print('x - : ', x)
         print('y l : ', y)
@@ -79,7 +74,7 @@ def object_detection_function():
     global mouse_x, mouse_y, mouse_flag
     total_passed_vehicle = 0
     mouse_flag = False
-
+    video = 'video/qq1.jpg'
     rt_x = 752
     lt_x = 703
 
@@ -118,11 +113,11 @@ def object_detection_function():
             detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
             num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 
-            cap = cv2.VideoCapture('video/abc.png')
+            cap = cv2.VideoCapture(video)
 
             fps_flag = True
             fps = cap.get(cv2.CAP_PROP_FPS)
-            #
+
             if fps > 10:
                 fps_flag = True
             elif fps < 10:
@@ -161,12 +156,7 @@ def object_detection_function():
 
                     pts = np.array([[lt_x, 450], [rt_x, 440], [rb_x, 695], [lb_x, 715]], np.int32)
                     pts = pts.reshape((-1, 1, 2))
-                    # cv2.polylines(input_frame, [pts], True, (255, 255, 0), 2)
-
-                    # imgray = cv2.cvtColor(input_frame, cv2.COLOR_BGR2GRAY)
-                    # rets, thr = cv2.threshold(imgray, 70, 255, cv2.THRESH_BINARY)
-                    # _, countors, _ = cv2.findContours(thr, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-                    # cv2.drawContours(input_frame, countors, -1, (0, 255, 0), 0)
+                    cv2.polylines(input_frame, [pts], True, (255, 255, 0), 2)
 
                     total_passed_vehicle = total_passed_vehicle + counter
 
@@ -184,66 +174,20 @@ def object_detection_function():
                         print('차선 사이 최종 거리) : ', end_car_width - start_car_width)
 
                     font = cv2.FONT_HERSHEY_SIMPLEX
-                    # cv2.putText(input_frame, 'TOTAL COUNT : ' + str(counter_per), (10, 35), font, 1.0, (0, 0xFF, 0xFF), 2, cv2.FONT_HERSHEY_SIMPLEX)
-
-                    # cv2.putText(input_frame, 'AREA COUNT : ' + str(area_count), (10, 85), font, 0.6, (0, 0, 0xFF), 2, cv2.FONT_HERSHEY_SIMPLEX)
-
-                    # if counter == 1:
-                    #     cv2.line(input_frame, (0, mouse_y), (1400, mouse_y), (0, 0xFF, 0), 5)
-                    # else:
-                    #     cv2.line(input_frame, (0, mouse_y), (1400, mouse_y), (0, 0, 0xFF), 5)
-
-                    # cv2.line(input_frame, (mouse_x, mouse_y-20), (mouse_x, mouse_y+20), (0, 0xFF, 0), 5)
-                    # pts = np.array([[703, 450], [767, 450], [891, 715], [783, 715]], np.int32)
-
-                    # pts2 = np.array([[640, 450], [700, 450], [783, 715], [670, 715]], np.int32)
-                    # pts2 = pts2.reshape((-1, 1, 2))
-                    #
-                    # pts3 = np.array([[770, 450], [829, 450], [1000, 715], [894, 715]], np.int32)
-                    # pts3 = pts3.reshape((-1, 1, 2))
-                    #
-                    # pts4 = np.array([[832, 450], [890, 450], [1115, 715], [1003, 715]], np.int32)
-                    # pts4 = pts4.reshape((-1, 1, 2))
-
-                    # cv2.polylines(input_frame, [pts2], True, (255, 255, 255), 2)
-                    # cv2.polylines(input_frame, [pts3], True, (0, 255, 255), 2)
-                    # cv2.polylines(input_frame, [pts4], True, (255, 0, 0), 2)
-
-                    # if area_count > 0:
-                    #     cv2.polylines(input_frame, [pts], True, (255, 255, 0), 5)
-                    # else:
-                    #     cv2.polylines(input_frame, [pts], True, (255, 0, 255), 3)
-
                     cv2.imshow('result', input_frame)
-
-                    # pt2 = np.float32([[640, 450], [670, 715], [700, 450], [783, 715]])
-                    # pt3 = np.float32([[770, 450], [894, 715], [829, 450], [1000, 715]])
-                    # pt4 = np.float32([[832, 450], [1003, 715], [890, 450], [1115, 715]])
-                    # pt1 = np.float32([[lt_x, 450], [lb_x, 715], [rt_x, 440], [rb_x, 695]])
-                    # p_main = np.float32([[0, 10], [0, 300], [150, 0], [150, 300]])
 
                     # 투시 변환 (매개 좌표 4)
                     perspective_pt_a = np.float32([[lt_x, 450], [lb_x, 715], [rt_x, 440], [rb_x, 695]])
-                    perspective_pt_b = np.float32([[10, 10], [10, 300], [150, 10], [150, 300]])
-
-                    # pts_src = np.array([[141, 131], [480, 159], [493, 630], [64, 601]])
-                    # pts_dst = np.array([[10, 10], [10, 300], [150, 10], [150, 300]])
-
-                    # h, status = cv2.findHomography(pts_src, pts_dst)
+                    perspective_pt_b = np.float32([[0, 0], [0, int(distance * 20)], [lane_interval * 20, 0], [lane_interval * 20, int(distance * 20)]])
 
                     M = cv2.getPerspectiveTransform(perspective_pt_a, perspective_pt_b)
 
-                    # M2 = M * h
-                    # M2 = cv2.getPerspectiveTransform(pt2, p_main)
-                    # M3 = cv2.getPerspectiveTransform(pt3, p_main)
-                    # M4 = cv2.getPerspectiveTransform(pt4, p_main)
+                    test1 = cv2.warpPerspective(input_frame, M, (lane_interval * 20, int(distance * 20)))
 
-                    test1 = cv2.warpPerspective(input_frame, M, (160, 310))
-                    # test2 = cv2.warpPerspective(input_frame, M2, (150, 300))
-                    # test3 = cv2.warpPerspective(input_frame, M3, (150, 300))
-                    # test4 = cv2.warpPerspective(input_frame, M4, (150, 300))
+                    test1 = cv2.transpose(test1)  # 행렬 변경
+                    test1 = cv2.flip(test1, 1)
 
-                    # cv2.imshow('test1', test1)
+                    cv2.imshow('test1', test1)
 
                     if cv2.waitKey(1) & 0xFF == ord('q'):
                         cap.release()
@@ -258,7 +202,7 @@ def object_detection_function():
                             writer.writerows([csv_line.split(',')])
                 else:
                     # print("- END -")
-                    cap = cv2.VideoCapture('video/abc.png')
+                    cap = cv2.VideoCapture(video)
                     continue
 
 object_detection_function()
