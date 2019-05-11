@@ -4,7 +4,7 @@
    Computer Vision
 
 
-김동기
+Kim Dong-gi
 ---
 
 ### **Environment**  
@@ -15,7 +15,9 @@
 ### **Tool**  
 + PyCharm  
 ### **Detector**  
-+ SSD (Single Shot Multibox Detector)    
++ SSD (Single Shot Multibox Detector)  
+### **DataSet**  
++ COCO DataSet    
 ---
 
 **Sample Img**  
