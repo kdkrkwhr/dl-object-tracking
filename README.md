@@ -16,9 +16,9 @@ Kim Dong-gi
 + PyCharm  
 ### **Detector**  
 + SSD (Single Shot Multibox Detector)  
-### **DataSet**  
-+ COCO DataSet    
----
+
+
+
 
 **Sample Img**  
 ![Detection Example](https://ifh.cc/g/Ibrou.jpg)
