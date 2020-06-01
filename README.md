@@ -21,7 +21,7 @@ Kim Dong-gi
 
 
 **Sample Img**  
-![Detection Example](https://ibb.co/4VTJxZt)
+![Detection Example](https://i.ibb.co/jrMHFvf/TCV-Proj-01.png)
 
 
 ## **참고 자료**  
