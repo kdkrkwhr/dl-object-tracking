@@ -19,11 +19,6 @@ Kim Dong-gi
 
 
 
-
-**Sample Img**  
-![Detection Example](https://i.ibb.co/jrMHFvf/TCV-Proj-01.png)
-
-
 ## **참고 자료**  
 **Object Detection**  
 > https://github.com/ayooshkathuria/pytorch-yolo-v3  
