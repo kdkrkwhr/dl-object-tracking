@@ -17,6 +17,8 @@ Kim Dong-gi
 ### **Detector**  
 + SSD (Single Shot Multibox Detector)  
 
+### **GIF**
+![gif](https://gifs.com/gif/dongki-github-gpny2r)
 
 
 ## **참고 자료**  
