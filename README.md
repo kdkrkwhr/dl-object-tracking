@@ -4,7 +4,7 @@
    Computer Vision
 
 
-Kim Dong-gi
+Kim Dong-ki
 ---
 
 ### **Environment**  
